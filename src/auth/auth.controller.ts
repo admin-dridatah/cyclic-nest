@@ -15,6 +15,7 @@ import { SignInDto } from './dto';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Public()
   @HttpCode(HttpStatus.OK)
   @Post('login')
   signIn(@Body() signInDto: SignInDto) {
@@ -24,11 +25,5 @@ export class AuthController {
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
-  }
-
-  @Public()
-  @Get()
-  findAll() {
-    return [];
   }
 }
